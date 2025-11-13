@@ -1,0 +1,321 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+body, html{
+  overflow-x: hidden;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+/* ----------------------------- */
+/*       SAJÁT STÍLUSOK         */
+/* ----------------------------- */
+
+.weather-container {
+  font-family: "Georgia", serif;
+  background: #fff;
+  color: #222;
+  text-align: center;
+  padding: 40px;
+  overflow-x: visible;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.main-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 24px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.left, .center, .right {
+  flex: 1;
+}
+
+.left {
+  text-align: left;
+}
+
+.location h2 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.temperature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.temperature h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #0074c1;
+}
+
+.feels-like {
+  margin-top: 4px;
+  font-size: 0.95rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.weather-icon {
+  background: #0074c1;
+  border-radius: 8px;
+  width: 180px;
+  height: 120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 3rem;
+}
+
+.status {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  background: #fde8e8;
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 4px;
+}
+
+.right {
+  text-align: left;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- Heti napok vízszintes csúszkával --- */
+.week {
+  display: flex;
+  justify-content: flex-start;
+  gap: 16px;
+  width: 100%;
+  margin: 40px auto 0;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+
+  overflow-x: scroll;   
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: #0074c1 #f1f1f1;
+}
+
+.week::-webkit-scrollbar {
+  height: 8px;
+}
+.week::-webkit-scrollbar-thumb {
+  background: #0074c1;
+  border-radius: 4px;
+}
+.week::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* nap elemek görgetéshez illesztve */
+.day {
+  flex: 0 0 120px;
+  scroll-snap-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 8px;
+  padding: 10px 0;
+  transition: transform 0.2s ease;
+}
+
+.day:hover {
+  transform: scale(1.05);
+}
+
+.day .icon {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.temp {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+}
+
+/* Szebb görgetősáv webkit böngészőkhöz */
+.week::-webkit-scrollbar {
+  height: 8px;
+}
+
+.week::-webkit-scrollbar-thumb {
+  background: #0074c1;
+  border-radius: 4px;
+}
+
+.week::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* ----------------------------- */
+/*         RESZPONZÍV RÉSZ       */
+/* ----------------------------- */
+
+@media (max-width: 900px) {
+  .main-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .left, .center, .right {
+    text-align: center;
+    width: 100%;
+  }
+
+  .temperature h1 {
+    font-size: 2.4rem;
+  }
+
+  .weather-icon {
+    width: 140px;
+    height: 100px;
+  }
+
+  .status {
+    font-size: 1rem;
+    padding: 4px 14px;
+  }
+
+  .right {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .weather-container {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .main-card {
+    padding: 16px;
+  }
+
+  .temperature h1 {
+    font-size: 2rem;
+  }
+
+  .weather-icon {
+    width: 120px;
+    height: 80px;
+  }
+
+  .status {
+    font-size: 0.9rem;
+  }
+
+  .week {
+    gap: 12px;
+    padding-top: 16px;
+  }
+
+  .day {
+    flex: 0 0 100px;
+    font-size: 0.9rem;
+  }
+
+  .day .icon {
+    font-size: 1.6rem;
+  }
+
+  .temp {
+    font-size: 1rem;
+  }
+}
