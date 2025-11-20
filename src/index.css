@@ -2,108 +2,213 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+  padding: 0;
   min-height: 100vh;
 }
 
-body, html{
-  overflow-x: hidden;
+body {
+  min-width: 320px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ------------------------ */
+/*    APP ROOT + THEME     */
+/* ------------------------ */
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.app-root.light {
+  background: #e5f0ff;
+  color: #213547;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.app-root.dark {
+  background: #020617;
+  color: #e5e7eb;
 }
 
-/* ----------------------------- */
-/*       SAJÁT STÍLUSOK         */
-/* ----------------------------- */
+/* ------------------------ */
+/*   WEATHER CONTAINER      */
+/* ------------------------ */
 
 .weather-container {
+  position: relative;
   font-family: "Georgia", serif;
-  background: #fff;
+  background: #ffffff;
   color: #222;
   text-align: center;
-  padding: 40px;
-  overflow-x: visible;
+  padding: 40px 50px;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  max-width: 1100px;
+  width: 90vw;
+}
+
+.app-root.dark .weather-container {
+  background: #020617;
+  color: #e5e7eb;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 2.3rem;
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
+
+/* ------------------------ */
+/*      THEME TOGGLE        */
+/* ------------------------ */
+
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: rgba(15, 23, 42, 0.06);
+  backdrop-filter: blur(6px);
+}
+
+.app-root.dark .theme-toggle {
+  background: rgba(148, 163, 184, 0.1);
+  color: #e5e7eb;
+}
+
+/* ------------------------ */
+/*    CITY SEARCH FORM      */
+/* ------------------------ */
+
+.city-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.city-input-wrapper {
+  position: relative;
+  min-width: 220px;
+}
+
+.city-input {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #d0d0d0;
+  font-size: 0.95rem;
+  width: 100%;
+  outline: none;
+  background: inherit;
+  color: inherit;
+}
+
+.city-input:focus {
+  border-color: #0074c1;
+  box-shadow: 0 0 0 2px rgba(0, 116, 193, 0.15);
+}
+
+.city-suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 110%;
+  background: #ffffff;
+  border-radius: 12px;
+  margin: 4px 0 0;
+  padding: 4px 0;
+  list-style: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  font-size: 0.9rem;
+}
+
+.app-root.dark .city-suggestions {
+  background: #020617;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+.city-suggestions li {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.city-suggestions li:hover {
+  background: rgba(148, 163, 184, 0.15);
+}
+
+.city-button {
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #0074c1;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+
+.city-button:hover {
+  background: #005c99;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.city-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* ------------------------ */
+/*        MAIN CARD         */
+/* ------------------------ */
 
 .main-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  padding: 24px 48px;
-  max-width: 900px;
+  background: #fdfdfd;
+  border-radius: 18px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  padding: 30px 60px;
   margin: 0 auto;
-  gap: 20px;
+  gap: 30px;
 }
 
-.left, .center, .right {
+.app-root.dark .main-card {
+  background: #020617;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.left,
+.center,
+.right {
   flex: 1;
 }
 
@@ -112,27 +217,35 @@ button:focus-visible {
 }
 
 .location h2 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: bold;
   margin-bottom: 4px;
+}
+
+.location p {
+  font-size: 1rem;
 }
 
 .temperature {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .temperature h1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: #0074c1;
 }
 
+.thermo {
+  font-size: 2.2rem;
+}
+
 .feels-like {
-  margin-top: 4px;
-  font-size: 0.95rem;
+  margin-top: 6px;
+  font-size: 1rem;
 }
 
 .center {
@@ -141,76 +254,107 @@ button:focus-visible {
 
 .weather-icon {
   background: #0074c1;
-  border-radius: 8px;
-  width: 180px;
-  height: 120px;
+  border-radius: 14px;
+  width: 210px;
+  height: 140px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.icon {
-  font-size: 3rem;
+.weather-icon .icon {
+  font-size: 3.2rem;
 }
 
 .status {
-  margin-top: 8px;
+  margin-top: 10px;
   font-size: 1.1rem;
   background: #fde8e8;
   display: inline-block;
-  padding: 6px 18px;
-  border-radius: 4px;
+  padding: 8px 22px;
+  border-radius: 999px;
 }
 
 .right {
   text-align: left;
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.8;
 }
 
-/* --- Heti napok vízszintes csúszkával --- */
+/* ------------------------ */
+/*       WARNINGS           */
+/* ------------------------ */
+
+.warnings {
+  margin-top: 16px;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.warning {
+  margin: 4px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+
+.winter-warning {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 4px solid #1d4ed8;
+}
+
+.uv-warning {
+  background: rgba(248, 113, 113, 0.12);
+  border-left: 4px solid #dc2626;
+}
+
+.neutral-warning {
+  background: rgba(148, 163, 184, 0.12);
+  border-left: 4px solid #6b7280;
+}
+
+/* ------------------------ */
+/*      WEEK + TREND        */
+/* ------------------------ */
+
+.week-section {
+  margin-top: 32px;
+}
+
+.week-title {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
 .week {
   display: flex;
-  justify-content: flex-start;
-  gap: 16px;
-  width: 100%;
-  margin: 40px auto 0;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin: 0 auto;
   border-top: 1px solid #ddd;
   padding-top: 20px;
-
-  overflow-x: scroll;   
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
-  scrollbar-color: #0074c1 #f1f1f1;
 }
 
-.week::-webkit-scrollbar {
-  height: 8px;
-}
-.week::-webkit-scrollbar-thumb {
-  background: #0074c1;
-  border-radius: 4px;
-}
-.week::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* nap elemek görgetéshez illesztve */
 .day {
-  flex: 0 0 120px;
-  scroll-snap-align: center;
+  width: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fafafa;
-  border-radius: 8px;
-  padding: 10px 0;
-  transition: transform 0.2s ease;
+  border-radius: 10px;
+  padding: 12px 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.app-root.dark .day {
+  background: #020617;
+  border: 1px solid rgba(148, 163, 184, 0.4);
 }
 
 .day:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
 }
 
 .day .icon {
@@ -218,104 +362,139 @@ button:focus-visible {
   margin-bottom: 6px;
 }
 
-.temp {
-  font-weight: bold;
-  font-size: 1.2rem;
-  margin-bottom: 4px;
+.temp-range {
+  font-size: 0.95rem;
+  margin: 4px 0;
 }
 
-/* Szebb görgetősáv webkit böngészőkhöz */
-.week::-webkit-scrollbar {
-  height: 8px;
+.temp-min {
+  color: #3b82f6;
 }
 
-.week::-webkit-scrollbar-thumb {
-  background: #0074c1;
-  border-radius: 4px;
+.temp-max {
+  color: #ef4444;
 }
 
-.week::-webkit-scrollbar-track {
-  background: #f1f1f1;
+.day-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin: 2px 0;
 }
 
-/* ----------------------------- */
-/*         RESZPONZÍV RÉSZ       */
-/* ----------------------------- */
+.day-status {
+  font-size: 0.75rem;
+  text-align: center;
+  min-height: 2.4em;
+}
+
+/* grafikon oszlop */
+
+.trend-bar-wrapper {
+  margin-top: 8px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.trend-bar {
+  width: 16px;
+  border-radius: 999px;
+  background: linear-gradient(to top, #3b82f6, #ef4444);
+}
+
+/* ------------------------ */
+/*     LOADER + INFO        */
+/* ------------------------ */
+
+.loader-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 12px 0 16px;
+}
+
+.loader {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid rgba(148, 163, 184, 0.5);
+  border-top-color: #0074c1;
+  animation: spin 0.7s linear infinite;
+  margin-bottom: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.info-text {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.error-text {
+  color: #c0392b;
+}
+
+/* ------------------------ */
+/*       RESPONSIVE         */
+/* ------------------------ */
 
 @media (max-width: 900px) {
+  .weather-container {
+    padding: 30px 24px;
+    width: 100vw;
+    border-radius: 16px;
+  }
+
   .main-card {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     padding: 24px;
   }
 
-  .left, .center, .right {
+  .left,
+  .center,
+  .right {
     text-align: center;
-    width: 100%;
-  }
-
-  .temperature h1 {
-    font-size: 2.4rem;
-  }
-
-  .weather-icon {
-    width: 140px;
-    height: 100px;
-  }
-
-  .status {
-    font-size: 1rem;
-    padding: 4px 14px;
   }
 
   .right {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 600px) {
-  .weather-container {
-    padding: 20px;
+  .title {
+    font-size: 1.8rem;
   }
 
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 24px;
+  .city-form {
+    flex-direction: column;
+    align-items: center;
   }
 
   .main-card {
-    padding: 16px;
+    padding: 18px;
   }
 
   .temperature h1 {
-    font-size: 2rem;
-  }
-
-  .weather-icon {
-    width: 120px;
-    height: 80px;
-  }
-
-  .status {
-    font-size: 0.9rem;
+    font-size: 2.6rem;
   }
 
   .week {
     gap: 12px;
-    padding-top: 16px;
   }
 
   .day {
-    flex: 0 0 100px;
-    font-size: 0.9rem;
+    width: 110px;
   }
 
   .day .icon {
-    font-size: 1.6rem;
-  }
-
-  .temp {
-    font-size: 1rem;
+    font-size: 1.7rem;
   }
 }
