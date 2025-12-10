@@ -35,7 +35,7 @@ const WeeklyForecast: React.FC<WeeklyForecastProps> = ({ days }) => {
 
   return (
     <div className="week-section">
-      <h2 className="week-title">Következő 7 nap</h2>
+      <h2 className="week-title">Következő napok</h2>
 
       <div className="week">
         {first5.map((day) => (

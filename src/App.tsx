@@ -154,7 +154,7 @@ const WeatherProvider: React.FC<{ children: React.ReactNode }> = ({ children }) 
               setCityInput(e.target.value)
               setShowSuggestions(true)
             }}
-            placeholder="Írd be a várost (pl. London)"
+            placeholder="Írd be a várost"
             onFocus={() => setShowSuggestions(true)}
             onBlur={() => {
               setTimeout(() => setShowSuggestions(false), 150)
@@ -256,7 +256,7 @@ const App: React.FC = () => {
           {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
         </button>
 
-        <h1 className="title">Weather Forecast Blank Template</h1>
+        <h1 className="title">Weather Forecast</h1>
 
         <WeatherProvider>
           <AppContent />

@@ -323,4 +323,3 @@ export async function getWeather(city: string): Promise<WeatherData> {
     week,
   }
 }
-console.log("API_KEY:", API_KEY)

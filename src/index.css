@@ -64,13 +64,13 @@ body {
 }
 
 .app-root.dark .weather-container {
-  background: #020617;
+  background: #030922;
   color: #e5e7eb;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 .title {
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 24px;
 }
@@ -90,6 +90,8 @@ body {
   cursor: pointer;
   background: rgba(15, 23, 42, 0.06);
   backdrop-filter: blur(6px);
+  font-family: 'Courier New';
+  font-weight: 800;
 }
 
 .app-root.dark .theme-toggle {
@@ -119,11 +121,12 @@ body {
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid #d0d0d0;
-  font-size: 0.95rem;
+  font-size: 1rem;
   width: 100%;
   outline: none;
   background: inherit;
   color: inherit;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .city-input:focus {
@@ -151,11 +154,12 @@ body {
 .app-root.dark .city-suggestions {
   background: #020617;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  border: 1px solid #0074c1;
 }
-
 .city-suggestions li {
   padding: 6px 12px;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .city-suggestions li:hover {
@@ -172,6 +176,7 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .city-button:hover {
@@ -199,10 +204,12 @@ body {
   padding: 30px 60px;
   margin: 0 auto;
   gap: 30px;
+  font-family: 'Courier New';
+  font-weight: bold;
 }
 
 .app-root.dark .main-card {
-  background: #020617;
+  background: #040b2b;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
@@ -213,11 +220,11 @@ body {
 }
 
 .left {
-  text-align: left;
+  justify-content: center;
 }
 
 .location h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -229,6 +236,7 @@ body {
 .temperature {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   margin-top: 16px;
 }
@@ -237,6 +245,7 @@ body {
   font-size: 3.5rem;
   font-weight: bold;
   color: #0074c1;
+  font-family: 'Segoe UI';
 }
 
 .thermo {
@@ -263,17 +272,25 @@ body {
   justify-content: center;
 }
 
+.app-root.dark .weather-icon {
+  background: #004a7b;
+}
+
 .weather-icon .icon {
   font-size: 3.2rem;
 }
 
 .status {
   margin-top: 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   background: #fde8e8;
   display: inline-block;
   padding: 8px 22px;
   border-radius: 999px;
+}
+
+.app-root.dark .status {
+  background: #00406a;
 }
 
 .right {
@@ -290,6 +307,8 @@ body {
   margin-top: 16px;
   text-align: left;
   font-size: 0.95rem;
+  font-family: 'Courier New';
+  font-weight: bold;
 }
 
 .warning {
@@ -345,6 +364,7 @@ body {
   border-radius: 10px;
   padding: 12px 8px;
   transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #ddd;
 }
 
 .app-root.dark .day {
@@ -461,6 +481,10 @@ body {
   .center,
   .right {
     text-align: center;
+  }
+
+  .temperature {
+    justify-content: center;
   }
 
   .right {
